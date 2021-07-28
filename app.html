@@ -57,7 +57,7 @@
                     <div class="mx-2 my-2">
                         <label for="loanAmount">Loan Amount:</label>
                         <input type="number" value="15000" id="loanAmount" class="form-control mb-2">
-                        <label for="monthlyPayments">Monthly Payments:</label>
+                        <label for="monthlyPayments">Total Monthly Payments:</label>
                         <input type="number" value="60" id="monthlyPayments" class="form-control mb-2">
                         <label for="rate">Percent Rate:</label>
                         <input type="number" value="3" id="rate" class="form-control">
@@ -133,5 +133,6 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
     <script src="/JS/site.js"></script>
+    <script>document.getElementById("btnSubmit").addEventListener("click", getValues);</script>
 </body>
 </html>
