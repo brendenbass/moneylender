@@ -10,13 +10,15 @@ function getValues(){
     //get percent rate value
     percentRate = document.getElementById("rate").value;
 
-    //call calculation function
+    //call calculation functions
+    calculateTotals(loanAmount, monthlyPayments, percentRate)
     calculateNumbers(loanAmount, monthlyPayments, percentRate);
 }
 
 function calculateNumbers(loanAmount, monthlyPayments, percentRate){
 
     let moneyArray = [];
+    let 
 
     //money array
     for (let i = 1; i <= 60; i++) {
@@ -40,9 +42,9 @@ function calculateNumbers(loanAmount, monthlyPayments, percentRate){
 
         //find balance left
 
-        
-    }
 
+    }
+    return moneyArray;
 }
 
 
@@ -75,7 +77,7 @@ function calculateTotals(loanAmount, monthlyPayments, percentRate){
 
     totalMonthlyPayment = loanAmount * (percentRate/1200) / (1-(1+percentRate/1200)**(-monthlyPayments));
     totalPrincipal = loanAmount;
-    totalInterest = loanAmount * (percentRate/100);
+    totalInterest = loanAmount * (percentRate/100) * (monthlyPayments/12);
     totalCost = loanAmount + totalInterest;
 
 
