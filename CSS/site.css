@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #1d5888;
-    --secondary-color: #ff993b;
+    --primary-color: #004aad;
+    --secondary-color: #004aad;
     --dark-color: #292929;
     --white-color: #e7e7e7;
 }
@@ -70,4 +70,8 @@ code[class*="language-"],
 
 main > .container {
     padding: 60px 15px 0;
+}
+
+.darkBG {
+    background-color: #e9e7e7;
 }
