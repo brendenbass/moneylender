@@ -1,6 +1,6 @@
 //get the values the user input
 function getValues(){
-    
+
     //get loan amount value
     loanAmount = document.getElementById("loanAmount").value;
 
@@ -79,8 +79,9 @@ function calculateNumbers(loanAmount, monthlyPayments, percentRate){
     calculateTotals(loanAmount, monthlyPayments, percentRate, totalInterestPayment)
     return moneyArray;
 }
+
 //////////////////////////////
-//Display Totals for Top Right
+//Calculates Totals for Top Right
 function calculateTotals(loanAmount, monthlyPayments, percentRate){
 
     totalMonthlyPayment = loanAmount * (percentRate/1200) / (1-(1+percentRate/1200)**(-monthlyPayments));
@@ -93,7 +94,7 @@ function calculateTotals(loanAmount, monthlyPayments, percentRate){
 }
 
 //////////////////////////
-//Display Totals for Table
+//Display Totals for Top Right
 function displayTotals(totalMonthlyPayment, totalPrincipal, totalInterest, totalCost){
 
     const formatter = new Intl.NumberFormat('en-US', {
@@ -109,6 +110,8 @@ function displayTotals(totalMonthlyPayment, totalPrincipal, totalInterest, total
 
 }
 
+////////////////////
+//creates table data
 function displayData(moneyArray) {
 
     //get the table body element from the page
