@@ -222,8 +222,22 @@
                 <h5>calculateNumbers</h5>
                 <p>I will do most of my explanation in this function. This function does all of the calculating and also works with an array to give us all of our information. The other functions are primarily use to display data rather than calculate it.
                 <br>First, an array, <b>moneyArray</b>, is created. Then, a variable named <b>totalMonthlyPayment</b> is created to represent, well, the total monthly mortgage payment. It was not intended to be changed, so I placed it outside of the <b>for loop</b>.
-                <br>The <b>for loop</b> that comes next takes up most of this function. I created it to loop 60 times. (60 rows for the table; and for the 60 months )
-                </p>
+                <br>The <b>for loop</b> that comes next takes up most of this function. I created it to loop as many times as the total monthly payments the user inputs. (So, each loop represents one month.)
+                <br>Then, <b>monthNumber</b> is set equal to our index. This gives us our first column of months in the table. The number of the index/month is then pushed into our <b>moneyArray</b>.
+                <br>The <b>totalMonthlyPayment</b> is also pushed into the array. Nothing is done to it as it does not change.
+                <br>An <b>if else</b> statement is created. This is because, at the beginning, our remaining balance is equal to our loan balance, but once one month goes by, it is no longer equal to our loan balance. It has changed because the person has paid off some of their balance. Also, the <b>currentBalance</b> is set to our <b>remainingBalance</b>, because, for now, they are the same.
+                <br>Now, another <b>if else</b> statement is created to calculate interest. Again, it is separated (for my sanity) as the interest at the beginning is different from the interest past one month. <b>lastInterestPayment</b>, <b>newInterestPayment</b>, and <b>interestPayment</b> are created/declared as they are used in different mathematical formulas.
+                <br><b>principalPayment</b> is calculated (pretty easy formula) and pushed to our array.
+                <br>Again, another <b>if else</b> statement is created. At first, our totalInterestPayment is calculated differently than it is the second and third time. In both of these, <b>if</b> and <b>else</b>, the <b>interestPayment</b> and <b>totalInterestPayment</b> variables are pushed to the array.
+                <br>Finally, at the end of every loop, the <b>remainingBalance</b> is calculated and is pushed to the array. Our <b>currentBalance</b> is also set equal to our <b>remainingBalance</b>.
+                <br>At the end of this function, our array is sent to the <b>displayData</b> function. In addition, the variables <b>loanAmount</b>, <b>monthlyPayments</b>, <b>percentRate</b>, and <b>totalInterestPayment</b> are sent to the <b>calculateTotals</b> function.
+                <br><b>moneyArray</b> is returned.</p>
+                <h5>calculateTotals</h5>
+                <p>This function calculates all of the total numbers and sends them to <b>displayTotals</b>.</p>
+                <h5>displayTotals</h5>
+                <p>This function displays all of our total numbers under the "Your Monthly Payments" heading.</p>
+                <h5>displayData</h5>
+                <p>In a nutshell, this function displays all of our data from <b>moneyArray</b> in a table. I have explained this tfunction in extensive detail in my other coding challenge, Abracadabra. If you want to read more about it, click <a href="https://abracadabra.brendenbass.com/code.html" target="_blank">here</a>. Look for <b>displayData(acArray)</b>.</p>
             </div>
         </div>
     </div>
