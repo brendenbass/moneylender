@@ -22,7 +22,7 @@ function calculateNumbers(loanAmount, monthlyPayments, percentRate){
     let totalMonthlyPayment = loanAmount * (percentRate/1200) / (1-(1+percentRate/1200)**(-monthlyPayments));
 
     //money array
-    for (let i = 1; i <= 60; i++) {
+    for (let i = 1; i <= (monthlyPayments * 1); i++) {
 
         //add month number
         monthNumber = i;

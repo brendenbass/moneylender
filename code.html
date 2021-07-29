@@ -77,7 +77,7 @@
                         let totalMonthlyPayment = loanAmount * (percentRate/1200) / (1-(1+percentRate/1200)**(-monthlyPayments));
                     
                         //money array
-                        for (let i = 1; i <= 60; i++) {
+                        for (let i = 1; i <= (monthlyPayments * 1); i++) {
                     
                             //add month number
                             monthNumber = i;
@@ -221,7 +221,8 @@
                 <br>It is a function that grabs the user inputs and sends them to the function <b>calculateNumbers</b>.</p>
                 <h5>calculateNumbers</h5>
                 <p>I will do most of my explanation in this function. This function does all of the calculating and also works with an array to give us all of our information. The other functions are primarily use to display data rather than calculate it.
-                <br>
+                <br>First, an array, <b>moneyArray</b>, is created. Then, a variable named <b>totalMonthlyPayment</b> is created to represent, well, the total monthly mortgage payment. It was not intended to be changed, so I placed it outside of the <b>for loop</b>.
+                <br>The <b>for loop</b> that comes next takes up most of this function. I created it to loop 60 times. (60 rows for the table; and for the 60 months )
                 </p>
             </div>
         </div>
