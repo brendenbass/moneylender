@@ -11,10 +11,11 @@ function getValues(){
     percentRate = document.getElementById("rate").value;
 
     //call calculation functions
-    calculateTotals(loanAmount, monthlyPayments, percentRate)
     calculateNumbers(loanAmount, monthlyPayments, percentRate);
 }
 
+/////////////////////////////
+//calculate numbers for table
 function calculateNumbers(loanAmount, monthlyPayments, percentRate){
 
     let moneyArray = [];
@@ -51,20 +52,19 @@ function calculateNumbers(loanAmount, monthlyPayments, percentRate){
             interestPayment = newInterestPayment;
         }
 
-        //total interest payments
-        totalInterestPayment = lastInterestPayment + newInterestPayment;
-
         //add principal payment
         principalPayment = totalMonthlyPayment - interestPayment;
         moneyArray.push(principalPayment);
         
-        //add interest payment
+        //add interest payment & total interest
         if (i < 2){
-            moneyArray.push(interestPayment); 
+            moneyArray.push(interestPayment);
+            totalInterestPayment = lastInterestPayment + newInterestPayment;
+            moneyArray.push(totalInterestPayment);
         } else {
             moneyArray.push(interestPayment); 
             //add total interest payment
-            totalInterestPayment = lastInterestPayment + newInterestPayment;
+            totalInterestPayment = totalInterestPayment + newInterestPayment;
             moneyArray.push(totalInterestPayment);
         }
 
@@ -76,20 +76,24 @@ function calculateNumbers(loanAmount, monthlyPayments, percentRate){
 
     }
     displayData(moneyArray);
+    calculateTotals(loanAmount, monthlyPayments, percentRate, totalInterestPayment)
     return moneyArray;
 }
-
+//////////////////////////////
+//Display Totals for Top Right
 function calculateTotals(loanAmount, monthlyPayments, percentRate){
 
     totalMonthlyPayment = loanAmount * (percentRate/1200) / (1-(1+percentRate/1200)**(-monthlyPayments));
-    totalPrincipal = loanAmount;
-    totalInterest = loanAmount * (percentRate/100) * (monthlyPayments/12);
-    totalCost = loanAmount + totalInterest;
+    totalPrincipal = loanAmount * 1;
+    totalInterest = totalInterestPayment * 1;
+    totalCost = totalPrincipal + totalInterest;
 
 
     displayTotals(totalMonthlyPayment, totalPrincipal, totalInterest, totalCost);
 }
 
+//////////////////////////
+//Display Totals for Table
 function displayTotals(totalMonthlyPayment, totalPrincipal, totalInterest, totalCost){
 
     const formatter = new Intl.NumberFormat('en-US', {
@@ -116,6 +120,12 @@ function displayData(moneyArray) {
     //clear the table
     tableBody.innerHTML = "";
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      });
+
     for (let index = 0; index < moneyArray.length; index+= 6) {
         let tableRow = document.importNode(templateRow.content, true);
 
@@ -123,17 +133,17 @@ function displayData(moneyArray) {
         let rowCols = tableRow.querySelectorAll("td");
         rowCols[0].textContent = moneyArray[index];
 
-        rowCols[1].textContent = moneyArray[index+1];
+        rowCols[1].textContent = formatter.format(moneyArray[index+1]);
 
-        rowCols[2].textContent = moneyArray[index+2];
+        rowCols[2].textContent = formatter.format(moneyArray[index+2]);
 
-        rowCols[3].textContent = moneyArray[index+3];
+        rowCols[3].textContent = formatter.format(moneyArray[index+3]);
 
-        rowCols[4].textContent = moneyArray[index+4];
+        rowCols[4].textContent = formatter.format(moneyArray[index+4]);
 
-        rowCols[4].textContent = moneyArray[index+4];
+        rowCols[4].textContent = formatter.format(moneyArray[index+4]);
 
-        rowCols[5].textContent = moneyArray[index+5];
+        rowCols[5].textContent = formatter.format(moneyArray[index+5]);
 
         tableBody.appendChild(tableRow);
     }
