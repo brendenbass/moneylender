@@ -111,30 +111,29 @@ function displayData(moneyArray) {
     let tableBody = document.getElementById("results");
 
     //get the template itself
-    let templateRow = document.getElementById("fbTemplate");
+    let templateRow = document.getElementById("mlTemplate");
 
     //clear the table
     tableBody.innerHTML = "";
 
-    for (let index = 0; index < acArray.length; index+= 5) {
+    for (let index = 0; index < moneyArray.length; index+= 6) {
         let tableRow = document.importNode(templateRow.content, true);
 
         //grab the td to put into array
         let rowCols = tableRow.querySelectorAll("td");
-        rowCols[0].classList.add(acArray[index]);
-        rowCols[0].textContent = acArray[index];
+        rowCols[0].textContent = moneyArray[index];
 
-        rowCols[1].classList.add(acArray[index+1]);
-        rowCols[1].textContent = acArray[index+1];
+        rowCols[1].textContent = moneyArray[index+1];
 
-        rowCols[2].classList.add(acArray[index+2]);
-        rowCols[2].textContent = acArray[index+2];
+        rowCols[2].textContent = moneyArray[index+2];
 
-        rowCols[3].classList.add(acArray[index+3]);
-        rowCols[3].textContent = acArray[index+3];
+        rowCols[3].textContent = moneyArray[index+3];
 
-        rowCols[4].classList.add(acArray[index+4]);
-        rowCols[4].textContent = acArray[index+4];
+        rowCols[4].textContent = moneyArray[index+4];
+
+        rowCols[4].textContent = moneyArray[index+4];
+
+        rowCols[5].textContent = moneyArray[index+5];
 
         tableBody.appendChild(tableRow);
     }
